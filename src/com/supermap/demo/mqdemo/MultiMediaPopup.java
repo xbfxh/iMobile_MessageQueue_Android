@@ -65,10 +65,12 @@ public class MultiMediaPopup extends PopupWindow implements OnClickListener {
 
     private Point2D m_GPSPoint = new Point2D();
 
-    private String m_IPortalURI = "http://support.supermap.com.cn:8092/iportal";
-    private String m_IPortalUserName = "supermap";// "imobile";
-    private String m_IPortalPassword = "SuperMapbdpc123";// "supermap";
+	// 下面三个变量需要自己赋值，分别是自己部署的iportal服务的网址、用户名和密码（管理员权限）
+	private String m_IPortalURI;
+    private String m_IPortalUserName;
+    private String m_IPortalPassword;
 
+	
     private String portalInfo = "{content_type=1}" + "{uri=" + m_IPortalURI + "," + "username=" + m_IPortalUserName + "," + "passwd=" + m_IPortalPassword + "}";
 
     private String dvName = "MQDemo_MediaDataset"; // 存储多媒体文件信息的点数据集的名称
