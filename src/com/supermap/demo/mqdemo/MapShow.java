@@ -134,7 +134,12 @@ public class MapShow {
 		mMap.close();
 		mMapControl.dispose();
 		
-		mWorkspace.save();
+		try {
+			mWorkspace.save();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		mWorkspace.close();
 		mInfo.dispose();
 		mWorkspace.dispose();

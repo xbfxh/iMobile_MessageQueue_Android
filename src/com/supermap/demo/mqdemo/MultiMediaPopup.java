@@ -65,12 +65,17 @@ public class MultiMediaPopup extends PopupWindow implements OnClickListener {
 
     private Point2D m_GPSPoint = new Point2D();
 
-	// 下面三个变量需要自己赋值，分别是自己部署的iportal服务的网址、用户名和密码（管理员权限）
-	private String m_IPortalURI;
-    private String m_IPortalUserName;
-    private String m_IPortalPassword;
-
+	// 开源上传时，删掉此段，使用下面的未赋值部分
+    private String m_IPortalURI = "http://support.supermap.com.cn:8092/iportal";
+    private String m_IPortalUserName = "supermap";
+    private String m_IPortalPassword = "SuperMapbdpc123";
 	
+	//// 开源上传时，需使用这里的未赋值的
+	// 下面三个变量需要自己赋值，分别是自己部署的iportal服务的网址、用户名和密码（管理员权限）
+	//private String m_IPortalURI;
+   // private String m_IPortalUserName;
+    //private String m_IPortalPassword;
+
     private String portalInfo = "{content_type=1}" + "{uri=" + m_IPortalURI + "," + "username=" + m_IPortalUserName + "," + "passwd=" + m_IPortalPassword + "}";
 
     private String dvName = "MQDemo_MediaDataset"; // 存储多媒体文件信息的点数据集的名称
@@ -219,9 +224,13 @@ public class MultiMediaPopup extends PopupWindow implements OnClickListener {
                 @Override
                 public void run() {
                     if (!m_bLogin) {
-                        m_MDataCollector.login(m_IPortalURI, m_IPortalUserName, m_IPortalPassword);
-                        m_bLogin = true;
-
+                    	try {
+	                       m_MDataCollector.login(m_IPortalURI, m_IPortalUserName, m_IPortalPassword);
+	                        m_bLogin = true;
+                    	} catch (Exception ex) {
+                    		ex.printStackTrace();
+                    	}
+ 
                     }
                     // 更新数据集
                     if (m_DownloadService != null) {
@@ -244,8 +253,12 @@ public class MultiMediaPopup extends PopupWindow implements OnClickListener {
                 public void run() {
                     // 上传多媒体数据
                     if (!m_bLogin) {
-                        m_MDataCollector.login(m_IPortalURI, m_IPortalUserName, m_IPortalPassword);
-                        m_bLogin = true;
+                    	try {
+ 	                       m_MDataCollector.login(m_IPortalURI, m_IPortalUserName, m_IPortalPassword);
+ 	                        m_bLogin = true;
+                     	} catch (Exception ex) {
+                     		ex.printStackTrace();
+                     	}
                     }
                     // // 确定
                     // m_DownloadService.updateDataset(urlDataset,(DatasetVector)
@@ -314,8 +327,14 @@ public class MultiMediaPopup extends PopupWindow implements OnClickListener {
                 if (!m_bLogin) {
                     // m_MDataCollector.login(m_IPortalURI, m_IPortalUserName,
                     // m_IPortalPassword);
-                    m_MDataCollector.login(uri, user, pwd);
-                    m_bLogin = true;
+                    
+                	try {
+                		m_MDataCollector.login(uri, user, pwd);
+	                        m_bLogin = true;
+                 	} catch (Exception ex) {
+                 		ex.printStackTrace();
+                 	}
+
 
                 }
                 m_DownloadService.updateDataset(urlDataset, (DatasetVector) m_Workspace.getDatasources().get(1).getDatasets().get(dvName));
@@ -367,7 +386,13 @@ public class MultiMediaPopup extends PopupWindow implements OnClickListener {
             @Override
             public void run() {
                 if (!m_bLogin) {
-                    m_MDataCollector.login(m_IPortalURI, m_IPortalUserName, m_IPortalPassword);
+                    
+                    try {
+                    	m_MDataCollector.login(m_IPortalURI, m_IPortalUserName, m_IPortalPassword);
+	                    m_bLogin = true;
+                 	} catch (Exception ex) {
+                 		ex.printStackTrace();
+                 	}
                 }
                 m_UploadService.commitDataset(urlDataset, (DatasetVector) m_Workspace.getDatasources().get(1).getDatasets().get(0));
                 // m_MDataCollector.uploadMediaFiles(m_Rect);

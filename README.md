@@ -8,3 +8,4 @@ http://istore.supermap.com.cn/License/lic7c.aspx(后续会换成http://istore.su
 申请SuperMap iMobile 8C产品的许可替换。
 已安装app的用户需要手动删除sdcard下SuperMap/license文件夹下的许可文件或者用新申请的替换。
 2.如有疑问请拨打超图支持中心的电话咨询。
+3.由于iportal服务使用的是公司内测服务，每个版本都会升级，因此，在代码上传的时候把相关登录信息给屏蔽掉了，需要使用的时候，请先在MultiMediaPopup.java里添加网址与用户名密码信息，以防登录失败。
