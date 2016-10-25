@@ -79,8 +79,12 @@ public class MapShow {
 			mInfo.setType(WorkspaceType.SXWU);
 		}
 		
-		
-		boolean isopen = mWorkspace.open(mInfo);
+		boolean isopen = false;
+		try {
+		     isopen = mWorkspace.open(mInfo);
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		}
 		return isopen;
 	}
 	

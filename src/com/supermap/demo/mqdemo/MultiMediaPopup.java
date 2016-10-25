@@ -397,7 +397,9 @@ public class MultiMediaPopup extends PopupWindow implements OnClickListener {
     }
 
     public void clearMultiMedia() {
+    	// 清除本地多媒体数据
     	m_MDataCollector.removeMediaFilesWithBounds(m_Rect);
+    	// 清除server端数据服务上的数据
         new Thread(new Runnable() {
             @Override
             public void run() {

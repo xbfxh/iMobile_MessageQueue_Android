@@ -65,14 +65,14 @@ public class DefaultDataConfiguration {
 
 			{
 				// 重新拷贝数据源与工作空间
-				File[] files = mapDataDir.listFiles();
-				for(File f:files)
-				{
-					if (f.isFile())
-					{
-						f.delete();
-					}
-				}
+//				File[] files = mapDataDir.listFiles();
+//				for(File f:files)
+//				{
+//					if (f.isFile())
+//					{
+//						f.delete();
+//					}
+//				}
 
 				configMapData();
 			}

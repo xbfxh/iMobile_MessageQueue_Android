@@ -1067,6 +1067,12 @@ public class MainActivity extends Activity implements OnClickListener, MessageRe
 				}
 				
 			}
+
+			@Override
+			public void geometryMultiSelected(ArrayList<GeometrySelectedEvent> arg0) {
+				// TODO Auto-generated method stub
+				
+			}
 		});
     	
 	}
